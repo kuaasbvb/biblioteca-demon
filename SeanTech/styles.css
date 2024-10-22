@@ -1,0 +1,609 @@
+/* Importando fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset básico para melhor controle do layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #a4b4c5; /* Cor de fundo suave */
+    color: #333;
+    transition: background 0.3s; /* Transição suave para mudanças de tema */
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background: linear-gradient(to right, #000000, #000103); /* Gradiente moderno */
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Mantém o cabeçalho fixo ao rolar */
+    top: 0;
+    z-index: 1000; /* Certifica-se que o cabeçalho fique acima de outros elementos */
+}
+
+/* Container para o cabeçalho */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo do logo */
+.logo h1 {
+    margin: 0;
+    font-size: 2.5em; /* Aumentar o tamanho do título */
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav button {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 25px; /* Botões arredondados */
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav button:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+}
+
+/* Estilos para o catálogo */
+.catalogo {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto; /* Centralizar o catálogo */
+}
+
+.catalogo h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Título maior */
+    color: #000000;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 12px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Input arredondado */
+    transition: border 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input:focus {
+    border: 1px solid #000000;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao focar */
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-left: 10px;
+    font-size: 20px; /* Aumentar o ícone de pesquisa */
+    color: #000000; /* Cor do ícone */
+}
+
+/* Grid para os livros */
+.livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.livro {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 15px; /* Bordas arredondadas */
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.livro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.livro img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordas arredondadas nas imagens */
+}
+
+/* Estilos para os modais */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px; /* Bordas arredondadas nos modais */
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease; /* Animação ao abrir */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal .fechar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.modal .fechar:hover {
+    color: #e74c3c; /* Mudar cor ao passar o mouse */
+}
+
+.modal.hidden {
+    display: none;
+}
+
+/* Estilo do rodapé */
+footer {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: center;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos para a lista de reservas */
+#reservas {
+    margin: 20px;
+}
+
+#reservas-lista {
+    background: white;
+    padding: 15px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reserva {
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Estilo adicional para botões em formulários */
+button[type="submit"] {
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px; /* Botão arredondado */
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #000000;
+    transform: translateY(-2px);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input {
+        width: 90%; /* Aumentar largura em telas menores */
+        margin-bottom: 10px;
+    }
+
+    nav button {
+        padding: 10px 15px; /* Ajustar padding dos botões em telas menores */
+    }
+
+    .catalogo h2 {
+        font-size: 2em; /* Ajustar tamanho do título em telas menores */
+    }
+}
+
+/* Estilos para a caixa de reserva de livros */
+.modal-content {
+    background: #ffffff; /* Fundo branco para destacar o conteúdo */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    width: 90%;
+    max-width: 500px; /* Largura máxima */
+    animation: slideIn 0.3s ease; /* Animação de entrada */
+    position: relative; /* Para o botão de fechar */
+}
+
+/* Título da caixa de reserva */
+.modal-content h2 {
+    font-size: 1.8em; /* Tamanho do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    color: #4a69bd; /* Cor do título */
+    text-align: center; /* Centralizar o título */
+}
+
+/* Formulário de reserva */
+.form-reserva {
+    display: flex;
+    flex-direction: column; /* Organizar os itens verticalmente */
+}
+
+.form-reserva label {
+    margin-bottom: 5px; /* Espaçamento abaixo do rótulo */
+    font-weight: bold; /* Negrito para os rótulos */
+    color: #333; /* Cor do texto */
+}
+
+.form-reserva input, .form-reserva select {
+    padding: 12px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda sutil */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 15px; /* Espaçamento abaixo dos inputs */
+    transition: border 0.3s; /* Transição suave para a borda */
+}
+
+.form-reserva input:focus, .form-reserva select:focus {
+    border-color: #000000; /* Cor da borda ao focar */
+    outline: none; /* Remover o contorno padrão */
+}
+
+/* Botão de envio */
+.form-reserva button {
+    background: #000000; /* Cor de fundo do botão */
+    color: #ffffff; /* Cor do texto */
+    padding: 12px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    border-radius: 25px; /* Bordas arredondadas */
+    font-weight: bold; /* Negrito */
+    cursor: pointer; /* Mudar cursor ao passar o mouse */
+    transition: background 0.3s, transform 0.3s; /* Transições suaves */
+}
+
+.form-reserva button:hover {
+    background: #000000; /* Cor do botão ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+/* Estilo do botão de fechar */
+.modal .fechar {
+    position: absolute; /* Posicionamento absoluto */
+    top: 15px; /* Distância do topo */
+    right: 15px; /* Distância da direita */
+    cursor: pointer; /* Mudar cursor ao passar o mouse */
+    font-size: 24px; /* Tamanho do ícone de fechar */
+    color: #333; /* Cor do ícone */
+    transition: color 0.3s; /* Transição suave para a cor */
+}
+
+.modal .fechar:hover {
+    color: #e74c3c; /* Mudar cor ao passar o mouse */
+}
+
+/* Adicionando um efeito de desfoque ao fundo quando o modal estiver aberto */
+.modal {
+    backdrop-filter: blur(4px); /* Desfoque do fundo */
+}
+
+/* Estilos para o botão Reservar */
+.btn-reservar {
+    background: linear-gradient(90deg, #000000, #000000); /* Gradiente de cores */
+    color: #ffffff; /* Cor do texto */
+    padding: 12px 24px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    border-radius: 30px; /* Bordas arredondadas */
+    font-weight: bold; /* Texto em negrito */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Transições suaves */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.btn-reservar:hover {
+    background: linear-gradient(90deg, #000000, #000000); /* Inverte as cores no hover */
+    transform: translateY(-2px); /* Efeito de elevação */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Aumenta a sombra ao passar o mouse */
+}
+
+.btn-reservar:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5); /* Sombra externa ao focar */
+}
+
+/* Adicionando uma animação ao botão quando clicado */
+.btn-reservar:active {
+    transform: translateY(1px); /* Efeito de compressão ao clicar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Reduz a sombra ao clicar */
+}
+
+/* Estilo para a seção de avaliação */
+.avaliacao {
+    margin: 20px 0; /* Margem acima e abaixo */
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+/* Estilo das estrelas */
+.estrela {
+    font-size: 32px; /* Tamanho da estrela */
+    color: #d3d3d3; /* Cor padrão das estrelas (cinza claro) */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: color 0.3s; /* Transição suave de cor */
+}
+
+/* Efeito ao passar o mouse */
+.estrela:hover,
+.estrela:hover ~ .estrela {
+    color: #ffcc00; /* Cor das estrelas quando o mouse passa por cima */
+}
+
+/* Efeito para estrelas selecionadas */
+.estrela.selecionada {
+    color: #ffcc00; /* Cor das estrelas selecionadas */
+}
+
+/* Estilo para o resultado da avaliação */
+#resultado-avaliacao {
+    margin-top: 10px; /* Margem acima do resultado */
+    font-size: 18px; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilo geral do modal de reserva */
+#modal-reserva {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 400px; /* Largura máxima do modal */
+    margin: auto; /* Centraliza o modal na tela */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+    display: flex; /* Usando flexbox para layout */
+    flex-direction: column; /* Colunas em direção vertical */
+}
+
+/* Estilo do título do modal */
+#modal-reserva h3 {
+    font-size: 24px; /* Tamanho da fonte */
+    margin-bottom: 20px; /* Margem abaixo do título */
+    text-align: center; /* Centraliza o título */
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo dos rótulos dos campos do formulário */
+#modal-reserva label {
+    font-size: 16px; /* Tamanho da fonte */
+    margin-bottom: 5px; /* Margem abaixo do rótulo */
+    color: #555; /* Cor do texto */
+}
+
+/* Estilo dos campos de entrada */
+#modal-reserva input[type="text"],
+#modal-reserva input[type="number"],
+#modal-reserva input[type="tel"] {
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ddd; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 15px; /* Margem abaixo do campo */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Transição suave da cor da borda */
+}
+
+/* Efeito ao focar no campo de entrada */
+#modal-reserva input[type="text"]:focus,
+#modal-reserva input[type="number"]:focus,
+#modal-reserva input[type="tel"]:focus {
+    border-color: #000000; /* Muda a cor da borda para azul ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* Estilo do botão de confirmar reserva */
+#modal-reserva button[type="submit"] {
+    background-color: #000000; /* Cor de fundo azul */
+    color: white; /* Cor do texto branco */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 12px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+#modal-reserva button[type="submit"]:hover {
+    background-color: #000000; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo do botão de fechar */
+.fechar {
+    font-size: 20px; /* Tamanho da fonte */
+    color: #999; /* Cor cinza */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    position: absolute; /* Posiciona o botão no canto superior direito */
+    top: 10px; /* Distância do topo */
+    right: 15px; /* Distância do lado direito */
+}
+
+/* Efeito ao passar o mouse sobre o botão de fechar */
+.fechar:hover {
+    color: #333; /* Muda a cor para mais escura ao passar o mouse */
+}
+
+/* Estilo geral do modal de adicionar livro */
+#modal-adicionar {
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco com leve transparência */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 400px; /* Largura máxima do modal */
+    margin: auto; /* Centraliza o modal na tela */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+    display: flex; /* Usando flexbox para layout */
+    flex-direction: column; /* Colunas em direção vertical */
+}
+
+/* Estilo do título do modal */
+#modal-adicionar h3 {
+    font-size: 24px; /* Tamanho da fonte */
+    margin-bottom: 20px; /* Margem abaixo do título */
+    text-align: center; /* Centraliza o título */
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo dos rótulos dos campos do formulário */
+#modal-adicionar label {
+    font-size: 16px; /* Tamanho da fonte */
+    margin-bottom: 5px; /* Margem abaixo do rótulo */
+    color: #555; /* Cor do texto */
+}
+
+/* Estilo dos campos de entrada */
+#modal-adicionar input[type="text"] {
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ddd; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 15px; /* Margem abaixo do campo */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Transição suave da cor da borda */
+}
+
+/* Efeito ao focar no campo de entrada */
+#modal-adicionar input[type="text"]:focus {
+    border-color: #000000; /* Muda a cor da borda para azul ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* Estilo do botão de adicionar livro */
+#modal-adicionar button[type="submit"] {
+    background-color: #000000; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 12px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+#modal-adicionar button[type="submit"]:hover {
+    background-color: #000000; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo do botão de fechar */
+.fechar {
+    font-size: 20px; /* Tamanho da fonte */
+    color: #999; /* Cor cinza */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    position: absolute; /* Posiciona o botão no canto superior direito */
+    top: 10px; /* Distância do topo */
+    right: 15px; /* Distância do lado direito */
+}
+
+/* Efeito ao passar o mouse sobre o botão de fechar */
+.fechar:hover {
+    color: #333; /* Muda a cor para mais escura ao passar o mouse */
+}
+
+.btn-remover {
+    background-color: #dc3545; /* Cor vermelha */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 8px 12px; /* Espaçamento interno */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.btn-remover:hover {
+    background-color: #c82333; /* Cor mais escura ao passar o mouse */
+}
+
+.barra-pesquisa {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.barra-pesquisa input {
+    width: 80%; /* Largura do campo de pesquisa */
+    padding: 10px; /* Espaçamento interno */
+    border: 2px solid #ccc; /* Borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Transição suave da cor da borda */
+}
+
+.barra-pesquisa input:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    outline: none; /* Remove a linha de foco padrão */
+}
+
+
